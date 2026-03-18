@@ -5,4 +5,4 @@ class OutboundMessage(BaseModel):
     to : str = Field(min_length=1)
     message : str = Field(min_length=1)
     require_user_input: bool 
-    
+     

@@ -25,5 +25,5 @@ class BaseProject(BaseModel):
         file_path = Path(__file__).parent.parent / "Export" / f"{self.id}.txt"
         with open(file_path, "w") as f:
             f.write(self.model_dump_json(indent= 4))
-
+ 
     

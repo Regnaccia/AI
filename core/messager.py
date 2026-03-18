@@ -7,4 +7,4 @@ def compose_outbound_message(pj, sender, to, message):
         message= message
         )
     pj.save_message_in_hystory(message.model_dump())
-    return message
+    return message 
