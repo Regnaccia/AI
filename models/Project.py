@@ -16,8 +16,14 @@ class ProjectStatus(str, Enum):
 class BaseProject(BaseModel):
     id: str = Field(default_factory=generate_id)
     status : str = Field(default=ProjectStatus.WAITING_PROMPT)
+    hystory: list
+
+    def save_message_in_hystory(self, message:dict):
+        self.hystory.append(message)
 
     def save_to_disk(self):
         file_path = Path(__file__).parent.parent / "Export" / f"{self.id}.txt"
         with open(file_path, "w") as f:
             f.write(self.model_dump_json(indent= 4))
+
+    
