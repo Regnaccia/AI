@@ -1,17 +1,21 @@
 from pydantic import BaseModel, Field
-from typing import Literal
 from pathlib import Path
+
+from enum import Enum
+import json
 
 from utils.set_id import generate_id
 
-STATUS = Literal[
-    "WAITING_USER_PROMPT",
-    "PROCESSING_PROMPT"
-    ]
+class ProjectStatus(str, Enum):
+    WAITING_PROMPT = "WAITING_USER_PROMPT"
+    PROCESSING = "PROCESSING_PROMPT"
+    AWAITING_FEEDBACK = "AWAITING_USER_FEEDBACK"
+    READY_FOR_CTO = "READY_FOR_CTO"
+    DONE = "DONE"
 
 class BaseProject(BaseModel):
     id: str = Field(default_factory=generate_id)
-    status : STATUS = Field(default="WAITING_USER_PROMPT")
+    status : str = Field(default=ProjectStatus.WAITING_PROMPT)
 
     def save_to_disk(self):
         file_path = Path(__file__).parent.parent / "Export" / f"{self.id}.txt"
