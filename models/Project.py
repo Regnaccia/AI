@@ -15,11 +15,18 @@ class ProjectStatus(str, Enum):
 
 class BaseProject(BaseModel):
     id: str = Field(default_factory=generate_id)
-    status : str = Field(default=ProjectStatus.WAITING_PROMPT)
-    hystory: list
+    status: str = Field(default=ProjectStatus.WAITING_PROMPT)
+    active_agent: str = Field(default="agent_1")
+
+    hystory: list = Field(default=[])
+
+    def change_status(self, status: ProjectStatus):
+        self.status = status
+        self.save_to_disk()
 
     def save_message_in_hystory(self, message:dict):
         self.hystory.append(message)
+        self.save_to_disk()
 
     def save_to_disk(self):
         file_path = Path(__file__).parent.parent / "Export" / f"{self.id}.txt"

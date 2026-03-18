@@ -1,0 +1,18 @@
+{
+    "id": "1",
+    "status": "WAITING_USER_PROMPT",
+    "hystory": [
+        {
+            "sender": "system",
+            "to": "user",
+            "content": "Hy how can i help you today?",
+            "require_user_input": true
+        },
+        {
+            "sender": "user",
+            "to": "agent_1",
+            "content": "ciao"
+        }
+    ],
+    "active_agent": "agent_1"
+}

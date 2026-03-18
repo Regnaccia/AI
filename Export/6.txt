@@ -1,4 +1,0 @@
-{
-    "id": "6",
-    "status": "WAITING_USER_PROMPT"
-}
