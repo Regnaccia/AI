@@ -426,4 +426,4 @@ class Registry(BaseModel):
         agent.last_seen_at = utcnow()
 
         self.touch()
-        return task
+        return task 
