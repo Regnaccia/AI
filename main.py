@@ -1,5 +1,3 @@
-from Project import Project
-
 from models.Project import BaseProject
 
 if __name__ == "__main__":
